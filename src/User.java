@@ -6,7 +6,7 @@ public class User {
     private String secondName;
     private int age;
     private boolean isRegistered;
-    private long id;
+    private long userId;
     static long count = 0;
 
     public User(String firstName, String secondName, int age) {
@@ -14,7 +14,7 @@ public class User {
         this.secondName = secondName;
         this.age = age;
         this.isRegistered = false;
-        this.id = count+1;
+        this.userId = count+1;
         User.count ++;
     }
 
@@ -50,7 +50,7 @@ public class User {
         isRegistered = registered;
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 }
