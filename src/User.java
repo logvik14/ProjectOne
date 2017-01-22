@@ -5,17 +5,40 @@ public class User {
     private String firstName;
     private String secondName;
     private int age;
-    private boolean isRegistered;
+    private String email;
     private long userId;
-    static long count = 0;
+    private static long count = 0;
 
-    public User(String firstName, String secondName, int age) {
+
+    public User(String firstName, String secondName, int age, String email) throws Exception {
         this.firstName = firstName;
         this.secondName = secondName;
         this.age = age;
-        this.isRegistered = false;
+        this.email = email;
+
+        if (firstName == null || firstName.isEmpty() || secondName == null || secondName.isEmpty() || email == null || email.isEmpty()){
+            throw new Exception("First name, Last name and email should be filled");
+        }
+
         this.userId = count+1;
         User.count ++;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return email.equals(user.email);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return email.hashCode();
     }
 
     public String getFirstName() {
@@ -42,15 +65,11 @@ public class User {
         this.age = age;
     }
 
-    public boolean isRegistered() {
-        return isRegistered;
-    }
-
-    public void setRegistered(boolean registered) {
-        isRegistered = registered;
-    }
-
     public long getUserId() {
         return userId;
+    }
+
+    public static long getCount() {
+        return count;
     }
 }
