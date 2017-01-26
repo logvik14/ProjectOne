@@ -21,7 +21,7 @@ public class User {
         }
 
         this.userId = count+1;
-        User.count ++;
+        count ++;
     }
 
 

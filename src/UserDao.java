@@ -4,7 +4,7 @@ import java.util.Set;
 /**
  * Created by ilyav on 22.01.2017.
  */
-public class UserDao <T extends User> implements AbstactDao <T>{
+public class UserDao <T extends User> implements AbstactDao <User>{
 
     Set <User> allUsers = new HashSet<>();
     Set <User> allRegisteredUsers = new HashSet<>();
