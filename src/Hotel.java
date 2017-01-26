@@ -1,6 +1,4 @@
-/**
- * Created by ilyav on 26.01.2017.
- */
+
 public class Hotel {
     private String name;
     private String city;
