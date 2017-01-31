@@ -1,6 +1,7 @@
 
-public class Controller {
-    UserDao userDaoao = new UserDao();
-    HotelDao hotelDao = new HotelDao();
-    RoomDao roomDao = new RoomDao();
+public interface AbstactDao <T>{
+
+    public T save (T t) throws Exception;
+    public T delete (T t) throws Exception;
+    public Set<T> getAll();
 }
