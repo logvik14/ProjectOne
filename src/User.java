@@ -1,12 +1,10 @@
-/**
- * Created by ilyav on 21.01.2017.
- */
 public class User {
     private String firstName;
     private String secondName;
     private int age;
     private String email;
     private long userId;
+    boolean isRegistered;
     private static long count = 0;
 
 
@@ -15,6 +13,7 @@ public class User {
         this.secondName = secondName;
         this.age = age;
         this.email = email;
+        this.isRegistered = false;
 
         if (firstName == null || firstName.isEmpty() || secondName == null || secondName.isEmpty() || email == null || email.isEmpty()){
             throw new Exception("First name, Last name and email should be filled");
@@ -65,11 +64,27 @@ public class User {
         this.age = age;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public long getUserId() {
         return userId;
     }
 
-    public static long getCount() {
-        return count;
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public boolean isRegistered() {
+        return isRegistered;
+    }
+
+    public void setRegistered(boolean registered) {
+        isRegistered = registered;
     }
 }

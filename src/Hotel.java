@@ -3,9 +3,11 @@ public class Hotel {
     private String name;
     private String city;
     private long hotelId;
+    private List<Room> rooms = new ArrayList<>();
     private static long count =0;
 
-    public Hotel(String name, String city, long hotelId) {
+
+    public Hotel(String name, String city) {
         this.name = name;
         this.city = city;
         this.hotelId = count + 1;
@@ -34,5 +36,37 @@ public class Hotel {
 
     public void setHotelId(long hotelId) {
         this.hotelId = hotelId;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Hotel hotel = (Hotel) o;
+
+        if (hotelId != hotel.hotelId) return false;
+        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
+        return city != null ? city.equals(hotel.city) : hotel.city == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (int) (hotelId ^ (hotelId >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

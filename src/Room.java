@@ -1,24 +1,36 @@
-/**
- * Created by ilyav on 26.01.2017.
- */
+
 public class Room {
-    private String persons;
+
+    private int persons;
     private int price;
     private long roomId;
-    boolean isBooked;
-    private static int count;
+    private Hotel hotel;
+    private boolean isBooked;
+    private User userReserved;
+    private static int count = 0;
 
-    public Room(String persons, int price, long roomId) {
+
+    public Room(int persons, int price) {
         this.persons = persons;
         this.price = price;
-        this.roomId = roomId;
+        this.roomId = count +1;
+        this.hotel = null;
+        count ++;
     }
 
-    public String getPersons() {
+    public int getPersons() {
         return persons;
     }
 
-    public void setPersons(String persons) {
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public void setPersons(int persons) {
         this.persons = persons;
     }
 
@@ -46,11 +58,43 @@ public class Room {
         isBooked = booked;
     }
 
-    public static int getCount() {
-        return count;
+    public User getUserReserved() {
+        return userReserved;
     }
 
-    public static void setCount(int count) {
-        Room.count = count;
+    public void setUserReserved(User userReserved) {
+        this.userReserved = userReserved;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        if (persons != room.persons) return false;
+        if (price != room.price) return false;
+        if (roomId != room.roomId) return false;
+        if (isBooked != room.isBooked) return false;
+        return hotel != null ? hotel.equals(room.hotel) : room.hotel == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = persons;
+        result = 31 * result + price;
+        result = 31 * result + (int) (roomId ^ (roomId >>> 32));
+        result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
+        result = 31 * result + (isBooked ? 1 : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomId=" + roomId +
+                '}';
     }
 }
